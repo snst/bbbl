@@ -1,0 +1,8 @@
+/nfsroot
+/tftpboot
+/gcc-linaro-6.5.0-2018.12-x86_64_arm-linux-gnueabihf
+/buildroot
+/kernelbuildscripts
+/scripts/toolchain/*.tar.xz
+/download/*
+scripts/buildroot/data/beagleboneblue/rootfs-overlay/etc/default/SSID2.conf

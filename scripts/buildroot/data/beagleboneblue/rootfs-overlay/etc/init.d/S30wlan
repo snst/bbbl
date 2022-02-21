@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+
+printf "Connecting WLAN"
+
+wpa_supplicant -B -i wlan0 -c /etc/default/SSID.conf
+
+#dhcpcd wlan0

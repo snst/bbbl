@@ -1,0 +1,124 @@
+= Beagebone Blue
+
+== Links
+
+https://docs.emlid.com/navio/ardupilot/building-from-sources/
+https://forum.digikey.com/t/debian-getting-started-with-the-beaglebone-blue/12969
+
+https://bootlin.com/doc/training/buildroot/buildroot-labs.pdf
+https://bootlin.com/blog/tftp-nfs-booting-beagle-bone-black-wireless-pocket-beagle/
+https://bootlin.com/doc/training/buildroot/buildroot-slides.pdf
+https://bootlin.com/doc/training/buildroot/buildroot-labs.pdf
+
+https://tewarid.github.io/2014/10/10/wireless-on-raspberry-pi-with-buildroot.html
+https://github.com/RobertCNelson/bb-wl18xx-firmware/tree/master/debian
+
+
+https://github.com/beagleboard/beaglebone-blue/blob/master/BeagleBone_Blue_sch.pdf
+https://github.com/beagleboard/beaglebone-blue/blob/master/BeagleBone_Blue_brd.pdf
+
+== Config
+
+|===
+|target-IP| 192.168.1.100
+|host-IP  | 192.168.1.111
+|===
+
+== uboot
+
+=== Load kernel via tftp, mount NFS rootfs
+
+----
+setenv ipaddr 192.168.1.100
+setenv serverip 192.168.1.111
+setenv ethact usb_ether
+setenv usbnet_devaddr f8:dc:7a:00:00:02
+setenv usbnet_hostaddr f8:dc:7a:00:00:01
+
+setenv bootargs root=/dev/nfs rw ip=192.168.1.100:::::usb0 console=ttyO0,115200n8 g_ether.dev_addr=f8:dc:7a:00:00:02 g_ether.host_addr=f8:dc:7a:00:00:01 nfsroot=192.168.1.111:/nfsroot,nfsvers=3
+
+setenv bootcmd 'tftp 0x81000000 zImage; tftp 0x82000000 am335x-boneblue.dtb; bootz 0x81000000 - 0x82000000'
+
+boot
+----
+
+
+=== Commands
+
+|===
+| saveenv |
+| tftp 0x81000000 zImage |
+| tftp 0x82000000 am335x-boneblue.dtb |
+| md 0x81000000 | Show content in memory
+|===
+
+
+== Docker
+
+|===
+|docker images | show installed docker images
+|docker ps | show running docker containers
+|docker kill [NAME] | kill running docker container
+|===
+
+
+== Linux
+
+=== WLAN
+https://tewarid.github.io/2014/10/10/wireless-on-raspberry-pi-with-buildroot.html
+
+
+Create config file for WLAN:
+----
+wpa_passphrase YOUR_SSID YOUR_PW > SSID.conf
+----
+
+File content:
+----
+echo 'network={
+	ssid="YOUR_SSID"
+	#psk="YOUR_PW"
+	psk=GENERATED_PSK_PASSPHRASE
+} ' > SSID.conf
+----
+
+Start:
+----
+ip link set wlan0 up
+wpa_supplicant -B -i wlan0 -c SSID.conf
+dhcpcd wlan0
+----
+
+=== Commands
+
+|===
+|iw list |
+|ip link |
+|iw dev wlan0 scan |
+|netstat -n --udp --listen | Show listening UDP ports
+|nmap -T4 localhost | Show listening ports
+|df -h | Show mounts
+|sudo screen /dev/ttyUSB0 115200 | serial console
+|sudo picocom -b 115200 /dev/ttyUSB0 | serial console
+|atftp localhost
+
+get a.txt| tftp transfer
+|sudo umount -f -a -t nfs | Unmount all nfs mounts
+| sudo systemctl stop portmap
+
+sudo systemctl disable portmap
+
+sudo systemctl stop rpcbind
+
+sudo systemctl disable rpcbind | portmap error, disable on host
+
+
+|===
+
+=== Installs
+|===
+|sudo apt install picocom | serial console
+|sudo apt install atftp | tftp client
+|sudo apt install nfs-client -y | nfs client
+| |
+|===

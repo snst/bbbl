@@ -1,0 +1,147 @@
+U-Boot SPL 2019.04-00002-g23f263cc3f (Jul 24 2020 - 16:33:55 -0500)
+Trying to boot from MMC2
+Loading Environment from EXT4... Card did not respond to voltage select!
+
+
+U-Boot 2019.04-00002-g23f263cc3f (Jul 24 2020 - 16:33:55 -0500), Build: jenkins-github_Bootloader-Builder-141
+
+CPU  : AM335X-GP rev 2.1
+I2C:   ready
+DRAM:  512 MiB
+No match for driver 'omap_hsmmc'
+No match for driver 'omap_hsmmc'
+Some drivers were not found
+Reset Source: Power-on reset has occurred.
+RTC 32KCLK Source: Internal.
+MMC:   OMAP SD/MMC: 0, OMAP SD/MMC: 1
+Loading Environment from EXT4... Card did not respond to voltage select!
+Board: BeagleBone Black
+<ethaddr> not set. Validating first E-fuse MAC
+BeagleBone Black:
+Model: BeagleBoard.org BeagleBone Blue:
+BeagleBone: cape eeprom: i2c_probe: 0x54:
+BeagleBone: cape eeprom: i2c_probe: 0x55:
+BeagleBone: cape eeprom: i2c_probe: 0x56:
+BeagleBone: cape eeprom: i2c_probe: 0x57:
+Net:   eth0: MII MODE
+Could not get PHY for cpsw: addr 0
+cpsw, usb_ether
+Press SPACE to abort autoboot in 0 seconds
+board_name=[BBBL] ...
+Card did not respond to voltage select!
+Card did not respond to voltage select!
+Card did not respond to voltage select!
+gpio: pin 56 (gpio 56) value is 0
+gpio: pin 55 (gpio 55) value is 0
+gpio: pin 54 (gpio 54) value is 0
+gpio: pin 53 (gpio 53) value is 1
+Card did not respond to voltage select!
+Card did not respond to voltage select!
+switch to partitions #0, OK
+mmc1(part 0) is current device
+Scanning mmc 1:1...
+gpio: pin 56 (gpio 56) value is 0
+gpio: pin 55 (gpio 55) value is 0
+gpio: pin 54 (gpio 54) value is 0
+gpio: pin 53 (gpio 53) value is 1
+switch to partitions #0, OK
+mmc1(part 0) is current device
+gpio: pin 54 (gpio 54) value is 1
+Checking for: /uEnv.txt ...
+Checking for: /boot.scr ...
+Checking for: /boot/boot.scr ...
+Checking for: /boot/uEnv.txt ...
+gpio: pin 55 (gpio 55) value is 1
+2083 bytes read in 22 ms (91.8 KiB/s)
+Loaded environment from /boot/uEnv.txt
+debug: [dtb=am335x-boneblue.dtb] ...
+Using: dtb=am335x-boneblue.dtb ...
+Checking if uname_r is set in /boot/uEnv.txt...
+gpio: pin 56 (gpio 56) value is 1
+Running uname_boot ...
+loading /boot/vmlinuz-4.19.94-ti-rt-r45 ...
+10187264 bytes read in 668 ms (14.5 MiB/s)
+debug: [enable_uboot_overlays=1] ...
+debug: [enable_uboot_cape_universal=1] ...
+debug: [uboot_base_dtb_univ=am335x-boneblue.dtb] ...
+uboot_overlays: [uboot_base_dtb=am335x-boneblue.dtb] ...
+uboot_overlays: Switching too: dtb=am335x-boneblue.dtb ...
+loading /boot/dtbs/4.19.94-ti-rt-r45/am335x-boneblue.dtb ...
+130279 bytes read in 70 ms (1.8 MiB/s)
+uboot_overlays: [fdt_buffer=0x60000] ...
+uboot_overlays: loading /lib/firmware/BB-ADC-00A0.dtbo ...
+867 bytes read in 217 ms (2.9 KiB/s)
+uboot_overlays: loading /lib/firmware/AM335X-PRU-RPROC-4-19-TI-00A0.dtbo ...
+3801 bytes read in 83 ms (43.9 KiB/s)
+loading /boot/initrd.img-4.19.94-ti-rt-r45 ...
+3838187 bytes read in 265 ms (13.8 MiB/s)
+debug: [console=ttyO0,115200n8 bone_capemgr.uboot_capemgr_enabled=1 root=/dev/mmcblk1p1 ro rootfstype=ext4 rootwait coherent_pool=1M net.ifnames=0 lpj=1990656 rng_core.default_quality=100 quiet] ...
+debug: [bootz 0x82000000 0x88080000:3a90eb 88000000] ...
+## Flattened Device Tree blob at 88000000
+   Booting using the fdt blob at 0x88000000
+   Loading Ramdisk to 8fc56000, end 8ffff0eb ... OK
+   Loading Device Tree to 8fbd3000, end 8fc55fff ... OK
+
+Starting kernel ...
+
+[    0.001597] timer_probe: no matching timers found
+[    0.212126] l4_wkup_cm:clk:0010:0: failed to disable
+[    1.148078] pinctrl-single 44e10800.pinmux: pin PIN102 already requested by 48300180.eqep; cannot claim for ocp:P9_30_pinmux
+[    1.164803] pinctrl-single 44e10800.pinmux: pin-102 (ocp:P9_30_pinmux) status -22
+[    1.172340] pinctrl-single 44e10800.pinmux: could not request pin 102 (PIN102) from group pinmux_P9_30_spi_pin  on device pinctrl-single
+[    1.184663] bone-pinmux-helper ocp:P9_30_pinmux: Error applying setting, reverse things back
+[    1.336323] omap_voltage_late_init: Voltage driver support not added
+rootfs: recovering journal
+rootfs: clean, 31318/233392 files, 197171/932864 blocks
+[***   ] (2 of 4) A start job is running for…8xx wlan0 Service (27s / 1min 34s)[   38.276975] wkup_m3_ipc 44e11324.wkup_m3_ipc: could not get rproc handle
+[   38.450217] PM: Cannot get wkup_m3_ipc handle
+[  OK  ] Listening on Load/Save RF Kill Switch Status /dev/rfkill Watch.
+[  OK  ] Found device /dev/ttyGS0.
+[  OK  ] Started Serial Getty on ttyGS0.
+[  OK  ] Started Generic Board Startup.
+[  OK  ] Found device /dev/ttyS0.
+[  OK  ] Started Serial Getty on ttyS0.
+[  OK  ] Reached target Login Prompts.
+         Starting BB WL18xx Bluetooth Service...
+
+Debian GNU/Linux 9 beaglebone ttyS0
+
+BeagleBoard.org Debian Stretch Console Image 2020-07-28
+
+Support: https://bbb.io/debian
+
+default username:password is [debian:temppwd]
+
+beaglebone login: [   49.207340] wkup_m3_ipc 44e11324.wkup_m3_ipc: could not get rproc handle
+[   49.243067] PM: Cannot get wkup_m3_ipc handle
+[   52.411604] wkup_m3_ipc 44e11324.wkup_m3_ipc: could not get rproc handle
+[   52.430475] PM: Cannot get wkup_m3_ipc handle
+[   52.446696] wkup_m3_ipc 44e11324.wkup_m3_ipc: could not get rproc handle
+[   52.470088] PM: Cannot get wkup_m3_ipc handle
+[   63.176803] wkup_m3_ipc 44e11324.wkup_m3_ipc: could not get rproc handle
+[   63.193506] PM: Cannot get wkup_m3_ipc handle
+[   63.553378] wkup_m3_ipc 44e11324.wkup_m3_ipc: could not get rproc handle
+[   63.566489] PM: Cannot get wkup_m3_ipc handle
+[   66.415383] PM: Cannot get wkup_m3_ipc handle
+
+Debian GNU/Linux 9 beaglebone ttyS0
+
+BeagleBoard.org Debian Stretch Console Image 2020-07-28
+
+Support: https://bbb.io/debian
+
+default username:password is [debian:temppwd]
+
+beaglebone login: debian
+Password: 
+Last login: Sat Feb 19 14:52:20 UTC 2022 on ttyS0
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+debian@beaglebone:~$ uname -a
+Linux beaglebone 4.19.94-ti-rt-r45 #1stretch SMP PREEMPT RT Thu Jun 18 19:21:19 UTC 2020 armv7l GNU/Linux
+debian@beaglebone:~$ 

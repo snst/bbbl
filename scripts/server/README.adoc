@@ -1,0 +1,45 @@
+= NFS
+
+https://hub.docker.com/r/erichough/nfs-server
+
+----
+docker pull erichough/nfs-server
+----
+
+Exports:
+----
+/nfsroot *(rw,no_root_squash,no_subtree_check)
+----
+
+|===
+|/nfsroot | * | (rw,no_root_squash,no_subtree_check)
+|path to share | allows all clients | access rights
+|===
+
+
+Run:
+
+----
+docker run --privileged                               \
+  --network=host                                      \
+  -v ${SCRIPT_DIR}/../../nfsroot:/nfsroot             \
+  -v ${SCRIPT_DIR}/exports:/etc/exports:ro            \
+  -p 2049:2049                                        \
+  erichough/nfs-server
+----
+
+maps export file and nfsroot into container
+
+= TFTP
+
+https://hub.docker.com/r/pghalliday/tftp
+
+----
+docker pull pghalliday/TFTP
+----
+
+Run:
+
+----
+docker run -p 0.0.0.0:69:69/udp -v /var/tftpboot_host:/var/tftpboot -i -t pghalliday/tftp
+----

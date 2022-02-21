@@ -1,0 +1,40 @@
+https://bootlin.com/doc/training/buildroot/buildroot-slides.pdf
+https://bootlin.com/doc/training/buildroot/buildroot-labs.pdf
+
+
+|===
+|.config | full config file, contains the value for all options
+|defconfig | stores only the values for options for which the non-default value is chosen
+|===
+
+Don't copy defconfig to .config!
+
+|===
+|make list-defconfigs | List default configs
+|make beaglebone_defconfig | Write configs/beaglebone_defconfig to ./config
+|make menuconfig | Build Options => Location to save buildroot config: change to: .../beagleboneblue_defconfig
+save to: .config
+|make savedefconfig | Creates 'beagleboneblue_defconfig' from .config
+|===
+
+More settings:
+
+Sets overlay filesystem. Include WLAN firmware. DHCP Client, ssh server
+----
+Toolchain => Toolchain type => External toolchain
+          => Toolchain => Linaro ARM
+
+BR2_ROOTFS_OVERLAY=board/beagleboneblue/rootfs-overlay
+BR2_PACKAGE_WILINK_BT_FIRMWARE
+BR2_PACKAGE_WPA_SUPPLICANT
+BR2_PACKAGE_IW
+BR2_PACKAGE_LINUX_FIRMWARE_TI_WL18XX
+BR2_PACKAGE_WPA_SUPPLICANT_CLI
+BR2_PACKAGE_DHCPCD
+BR2_PACKAGE_DROPBEAR
+----
+
+Build:
+----
+make 2>&1 | tee build.log
+----

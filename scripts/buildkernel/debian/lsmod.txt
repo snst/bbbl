@@ -1,0 +1,34 @@
+debian@beaglebone:/$ lsmod
+Module                  Size  Used by
+xt_conntrack           16384  1
+ipt_MASQUERADE         16384  1
+wl18xx                114688  0
+wlcore                245760  1 wl18xx
+mac80211              741376  2 wl18xx,wlcore
+pru_rproc              28672  0
+irq_pruss_intc         20480  1 pru_rproc
+cfg80211              679936  3 wl18xx,wlcore,mac80211
+pruss                  16384  1 pru_rproc
+bnep                   28672  2
+wkup_m3_rproc          16384  1
+pvrsrvkm              421888  0
+pruss_soc_bus          16384  0
+spidev                 20480  0
+wlcore_sdio            16384  0
+hci_uart               57344  1
+bluetooth             548864  23 hci_uart,bnep
+ecdh_generic           28672  1 bluetooth
+pm33xx                 16384  0
+wkup_m3_ipc            16384  1 pm33xx
+remoteproc             57344  3 pru_rproc,wkup_m3_rproc,wkup_m3_ipc
+virtio                 16384  1 remoteproc
+virtio_ring            28672  1 remoteproc
+uio_pdrv_genirq        16384  0
+uio                    20480  1 uio_pdrv_genirq
+usb_f_acm              16384  2
+u_serial               20480  3 usb_f_acm
+usb_f_ncm              28672  2
+usb_f_rndis            32768  4
+u_ether                24576  2 usb_f_ncm,usb_f_rndis
+libcomposite           65536  16 usb_f_acm,usb_f_ncm,usb_f_rndis
+debian@beaglebone:/$ 

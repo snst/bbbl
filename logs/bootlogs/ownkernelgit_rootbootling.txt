@@ -1,0 +1,320 @@
+=> setenv ipaddr 192.168.1.100
+=> setenv serverip 192.168.1.111
+=> setenv ethact usb_ether
+=> setenv usbnet_devaddr f8:dc:7a:00:00:02
+=> setenv usbnet_hostaddr f8:dc:7a:00:00:01
+=> 
+=> 
+=> 
+=> setenv bootargs root=/dev/nfs rw ip=192.168.1.100:::::usb0 console=ttyO0,115200n8 g_ether.dev_addr=f8:dc:7a:00:00:02 g_ether.host_addr=f8:dc:7a:00:00:01 nfsroot=192.168.1.111:/nfsroot,nfsvers=3
+=> 
+=> setenv bootcmd 'tftp 0x81000000 zImage; tftp 0x82000000 am335x-boneblue.dtb; bootz 0x81000000 - 0x82000000'
+=> 
+=> boot
+using musb-hdrc, OUT ep1out IN ep1in STATUS ep2in
+MAC f8:dc:7a:00:00:02
+HOST MAC f8:dc:7a:00:00:01
+RNDIS ready
+musb-hdrc: peripheral reset irq lost!
+high speed config #2: 2 mA, Ethernet Gadget, using RNDIS
+USB RNDIS network up!
+Using usb_ether device
+TFTP from server 192.168.1.111; our IP address is 192.168.1.100
+Filename 'zImage'.
+Load address: 0x81000000
+Loading: #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 ###############################################
+	 5.3 MiB/s
+done
+Bytes transferred = 14041600 (d64200 hex)
+using musb-hdrc, OUT ep1out IN ep1in STATUS ep2in
+MAC f8:dc:7a:00:00:02
+HOST MAC f8:dc:7a:00:00:01
+RNDIS ready
+high speed config #2: 2 mA, Ethernet Gadget, using RNDIS
+USB RNDIS network up!
+Using usb_ether device
+TFTP from server 192.168.1.111; our IP address is 192.168.1.100
+Filename 'am335x-boneblue.dtb'.
+Load address: 0x82000000
+Loading: #######
+	 4.6 MiB/s
+done
+Bytes transferred = 91524 (16584 hex)
+## Flattened Device Tree blob at 82000000
+   Booting using the fdt blob at 0x82000000
+   Loading Device Tree to 8ffe6000, end 8ffff583 ... OK
+
+Starting kernel ...
+
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 5.10.90-ti-rt-r36 (vscode@7e8581157386) (arm-linux-gnueabi-gcc (GCC) 10.3.0, GNU ld (GNU Binutils) 2.36.1) #1 SMP PREEMPT_RT Sat Feb 19 23:03:25 UTC 2022
+[    0.000000] CPU: ARMv7 Processor [413fc082] revision 2 (ARMv7), cr=10c5387d
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] OF: fdt: Machine model: TI AM335x BeagleBone Blue
+[    0.000000] Memory policy: Data cache writeback
+[    0.000000] efi: UEFI not found.
+[    0.000000] cma: Reserved 48 MiB at 0x9c800000
+[    0.000000] Zone ranges:
+[    0.000000]   Normal   [mem 0x0000000080000000-0x000000009fdfffff]
+[    0.000000]   HighMem  empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000080000000-0x000000009fdfffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000080000000-0x000000009fdfffff]
+[    0.000000] CPU: All CPU(s) started in SVC mode.
+[    0.000000] AM335X ES2.1 (sgx neon)
+[    0.000000] percpu: Embedded 17 pages/cpu s39712 r8192 d21728 u69632
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 129412
+[    0.000000] Kernel command line: root=/dev/nfs rw ip=192.168.1.100:::::usb0 console=ttyO0,115200n8 g_ether.dev_addr=f8:dc:7a:00:00:02 g_ether.host_addr=f8:dc:7a:00:00:01 nfsroot=192.168.1.111:/nfsroot,nfsvers=3
+[    0.000000] Dentry cache hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 32768 (order: 5, 131072 bytes, linear)
+[    0.000000] mem auto-init: stack:off, heap alloc:on, heap free:off
+[    0.000000] Memory: 442324K/522240K available (14336K kernel code, 1410K rwdata, 7348K rodata, 1024K init, 315K bss, 30764K reserved, 49152K cma-reserved, 0K highmem)
+[    0.000000] random: get_random_u32 called from __kmem_cache_create+0x1c/0x3d4 with crng_init=0
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=2 to nr_cpu_ids=1.
+[    0.000000] rcu: 	RCU priority boosting: priority 1 delay 500 ms.
+[    0.000000] rcu: 	RCU_SOFTIRQ processing moved to rcuc kthreads.
+[    0.000000] 	No expedited grace period (rcu_normal_after_boot).
+[    0.000000] 	Trampoline variant of Tasks RCU enabled.
+[    0.000000] 	Tracing variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
+[    0.000000] NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
+[    0.000000] IRQ: Found an INTC at 0x(ptrval) (revision 5.0) with 128 interrupts
+[    0.000000] TI gptimer clocksource: always-on /ocp/interconnect@44c00000/segment@200000/target-module@31000
+[    0.000002] sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 89478484971ns
+[    0.000024] clocksource: dmtimer: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 79635851949 ns
+[    0.000389] TI gptimer clockevent: 24000000 Hz at /ocp/interconnect@48000000/segment@0/target-module@40000
+[    0.001566] Console: colour dummy device 80x30
+[    0.001611] WARNING: Your 'console=ttyO0' has been replaced by 'ttyS0'
+[    0.001617] This ensures that you still see kernel messages. Please
+[    0.001621] update your kernel commandline.
+[    0.001660] Calibrating delay loop... 995.32 BogoMIPS (lpj=1990656)
+[    0.048464] pid_max: default: 32768 minimum: 301
+[    0.048788] LSM: Security Framework initializing
+[    0.048831] Yama: becoming mindful.
+[    0.049088] AppArmor: AppArmor initialized
+[    0.049102] TOMOYO Linux initialized
+[    0.049199] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+[    0.049218] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+[    0.050751] CPU: Testing write buffer coherency: ok
+[    0.050835] CPU0: Spectre v2: using BPIALL workaround
+[    0.072872] Setting up static identity map for 0x80100000 - 0x80100060
+[    0.080485] rcu: Hierarchical SRCU implementation.
+[    0.105390] EFI services will not be available.
+[    0.116519] smp: Bringing up secondary CPUs ...
+[    0.116529] smp: Brought up 1 node, 1 CPU
+[    0.116539] SMP: Total of 1 processors activated (995.32 BogoMIPS).
+[    0.116550] CPU: All CPU(s) started in SVC mode.
+[    0.117482] devtmpfs: initialized
+[    0.140776] VFP support v0.3: implementor 41 architecture 3 part 30 variant c rev 3
+[    0.141308] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.141352] futex hash table entries: 256 (order: 2, 16384 bytes, linear)
+[    0.145183] pinctrl core: initialized pinctrl subsystem
+[    0.146493] DMI not present or invalid.
+[    0.147068] NET: Registered protocol family 16
+[    0.151705] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.173864] l3-aon-clkctrl:0000:0: failed to disable
+[    0.174690] audit: initializing netlink subsys (disabled)
+[    0.176205] thermal_sys: Registered thermal governor 'fair_share'
+[    0.176222] thermal_sys: Registered thermal governor 'bang_bang'
+[    0.176227] thermal_sys: Registered thermal governor 'step_wise'
+[    0.176232] thermal_sys: Registered thermal governor 'user_space'
+[    0.176237] thermal_sys: Registered thermal governor 'power_allocator'
+[    0.176872] cpuidle: using governor ladder
+[    0.176998] cpuidle: using governor menu
+[    0.180575] audit: type=2000 audit(0.172:1): state=initialized audit_enabled=0 res=1
+[    1.497199] hw-breakpoint: debug architecture 0x4 unsupported.
+[    1.526479] Kprobes globally optimized
+[    1.549117] raid6: skip pq benchmark and using algorithm neonx8
+[    1.549137] raid6: using neon recovery algorithm
+[    1.556779] iommu: Default domain type: Translated 
+[    1.559126] SCSI subsystem initialized
+[    1.559982] usbcore: registered new interface driver usbfs
+[    1.560064] usbcore: registered new interface driver hub
+[    1.560122] usbcore: registered new device driver usb
+[    1.561163] mc: Linux media interface: v0.10
+[    1.561213] videodev: Linux video capture interface: v2.00
+[    1.561402] pps_core: LinuxPPS API ver. 1 registered
+[    1.561411] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    1.561434] PTP clock support registered
+[    1.563634] NetLabel: Initializing
+[    1.563645] NetLabel:  domain hash size = 128
+[    1.563651] NetLabel:  protocols = UNLABELED CIPSOv4 CALIPSO
+[    1.563761] NetLabel:  unlabeled traffic allowed by default
+[    1.565034] clocksource: Switched to clocksource dmtimer
+[    2.637974] VFS: Disk quotas dquot_6.6.0
+[    2.638090] VFS: Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)
+[    2.639511] AppArmor: AppArmor Filesystem Enabled
+[    2.654050] NET: Registered protocol family 2
+[    2.654312] IP idents hash table entries: 8192 (order: 4, 65536 bytes, linear)
+[    2.656320] tcp_listen_portaddr_hash hash table entries: 256 (order: 1, 8192 bytes, linear)
+[    2.656406] TCP established hash table entries: 4096 (order: 2, 16384 bytes, linear)
+[    2.656562] TCP bind hash table entries: 4096 (order: 4, 114688 bytes, linear)
+[    2.656675] TCP: Hash tables configured (established 4096 bind 4096)
+[    2.656849] UDP hash table entries: 256 (order: 2, 16384 bytes, linear)
+[    2.656898] UDP-Lite hash table entries: 256 (order: 2, 16384 bytes, linear)
+[    2.657297] NET: Registered protocol family 1
+[    2.670759] RPC: Registered named UNIX socket transport module.
+[    2.670775] RPC: Registered udp transport module.
+[    2.670780] RPC: Registered tcp transport module.
+[    2.670784] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    2.670797] NET: Registered protocol family 44
+[    2.672454] hw perfevents: enabled with armv7_cortex_a8 PMU driver, 5 counters available
+[    2.678199] Initialise system trusted keyrings
+[    2.678658] workingset: timestamp_bits=14 max_order=17 bucket_order=3
+[    2.688112] zbud: loaded
+[    2.695928] NFS: Registering the id_resolver key type
+[    2.695984] Key type id_resolver registered
+[    2.695991] Key type id_legacy registered
+[    2.696156] nfs4filelayout_init: NFSv4 File Layout Driver Registering...
+[    2.696166] nfs4flexfilelayout_init: NFSv4 Flexfile Layout Driver Registering...
+[    2.696235] jffs2: version 2.2. (NAND) (SUMMARY)  © 2001-2006 Red Hat, Inc.
+[    2.697648] fuse: init (API version 7.32)
+[    2.786311] xor: automatically using best checksumming function   neon      
+[    2.786337] Key type asymmetric registered
+[    2.786344] Asymmetric key parser 'x509' registered
+[    2.786435] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 245)
+[    2.790817] io scheduler mq-deadline registered
+[    3.133265] omap-mailbox 480c8000.mailbox: omap mailbox rev 0x400
+[    3.293880] debugfs: Directory '49000000.dma' with parent 'dmaengine' already present!
+[    3.293916] edma 49000000.dma: TI EDMA DMA engine driver
+[    3.328766] pinctrl-single 44e10800.pinmux: 142 pins, size 568
+[    3.346635] Serial: 8250/16550 driver, 6 ports, IRQ sharing disabled
+[    3.351760] 44e09000.serial: ttyS0 at MMIO 0x44e09000 (irq = 20, base_baud = 3000000) is a 8250
+[    3.351983] printk: console [ttyS0] enabled
+[    3.354364] 48022000.serial: ttyS1 at MMIO 0x48022000 (irq = 27, base_baud = 3000000) is a 8250
+[    3.356364] 48024000.serial: ttyS2 at MMIO 0x48024000 (irq = 28, base_baud = 3000000) is a 8250
+[    3.358772] 481a6000.serial: ttyS3 at MMIO 0x481a6000 (irq = 38, base_baud = 3000000) is a 8250
+[    3.359114] serial serial0: tty port ttyS3 registered
+Starting syslogd: [    3.360736] 481a8000.serial: ttyS4 at MMIO 0x481a8000 (irq = 39, base_baud = 3000000) is a 8250
+[    3.362902] 481aa000.serial: ttyS5 at MMIO 0x481aa000 (irq = 40, base_baud = 3000000) is a 8250
+OK
+[    3.367607] omap_rng 48310000.rng: Random Number Generator ver. 20
+[    3.368691] sdhci: Secure Digital Host Controller Interface driver
+Starting klogd: [    3.368700] sdhci: Copyright(c) Pierre Ossman
+[    3.368703] sdhci-pltfm: SDHCI platform and OF driver helper
+OK
+[    3.373384] random: fast init done
+[    3.373519] random: crng init done
+[    3.379917] sdhci-omap 481d8000.mmc: supply vqmmc not found, using dummy regulator
+Running sysctl: [    3.390999] sdhci-omap 47810000.mmc: supply vqmmc not found, using dummy regulator
+[    3.403421] libphy: Fixed MDIO Bus: probed
+[    3.407069] usbcore: registered new interface driver smsc95xx
+[    3.408855] am335x-phy-driver 47401300.usb-phy: supply vcc not found, using dummy regulator
+[    3.414162] am335x-phy-driver 47401b00.usb-phy: supply vcc not found, using dummy regulator
+[    3.419134] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    3.419205] ehci-platform: EHCI generic platform driver
+[    3.419652] ehci-omap: OMAP-EHCI Host Controller driver
+[    3.427722] mmc1: SDHCI controller on 481d8000.mmc [481d8000.mmc] using External DMA
+[    3.439273] udc-core: couldn't find an available UDC - added [g_ether] to list of pending drivers
+[    3.443293] omap_rtc 44e3e000.rtc: already running
+[    3.445533] omap_rtc 44e3e000.rtc: registered as rtc0
+OK
+[    3.445589] omap_rtc 44e3e000.rtc: setting system clock to 2000-01-01T00:02:40 UTC (946684960)
+[    3.447210] i2c /dev entries driver
+[    3.447942] Driver for 1-wire Dallas network protocol.
+[    3.452573] omap_wdt: OMAP Watchdog Timer Rev 0x01: initial timeout 60 sec
+[    3.453535] softdog: initialized. soft_noboot=0 soft_margin=60 sec soft_panic=0 (nowayout=0)
+[    3.453550] softdog:              soft_reboot_cmd=<not set> soft_active_on_boot=0
+[    3.455216] cpuidle: enable-method property 'ti,am3352' found operations
+[    3.457639] omap-aes 53500000.aes: OMAP AES hw accel rev: 3.2
+[    3.458095] omap-aes 53500000.aes: will run requests pump with realtime priority
+[    3.461983] omap-sham 53100000.sham: hw accel on OMAP rev 4.3
+Initializing random number generator: [    3.462326] omap-sham 53100000.sham: will run requests pump with realtime priority
+[    3.467422] hid: raw HID events driver (C) Jiri Kosina
+OK
+Saving random seed: [    3.468682] usbcore: registered new interface driver usbhid
+[    3.468694] usbhid: USB HID core driver
+[    3.475899] drop_monitor: Initializing network drop monitor service
+[    3.477542] NET: Registered protocol family 10
+[    3.488664] Segment Routing with IPv6
+[    3.488838] mip6: Mobile IPv6
+[    3.488852] NET: Registered protocol family 17
+OK
+[    3.493684] Key type dns_resolver registered
+[    3.493702] mpls_gso: MPLS GSO support
+[    3.493922] ThumbEE CPU extension supported.
+[    3.493949] Registering SWP/SWPB emulation handler
+[    3.493957] omap_voltage_late_init: Voltage driver support not added
+Starting network: [    3.495157] printk: console [ttyS0]: printing thread started
+[    3.495357] registered taskstats version 1
+[    3.495375] Loading compiled-in X.509 certificates
+[    3.495546] zswap: loaded using pool lzo/zbud
+[    3.517389] Key type ._fscrypt registered
+[    3.517408] Key type .fscrypt registered
+[    3.517414] Key type fscrypt-provisioning registered
+[    3.526790] Btrfs loaded, crc32c=crc32c-generic
+[    3.527014] AppArmor: AppArmor sha1 policy hashing enabled
+[    3.528714] mmc1: new high speed MMC card at address 0001
+[    3.538140] mmcblk1: mmc1:0001 S10004 3.56 GiB 
+[    3.538751] mmcblk1boot0: mmc1:0001 S10004 partition 1 4.00 MiB
+[    3.539356] mmcblk1boot1: mmc1:0001 S10004 partition 2 4.00 MiB
+ip: RTNETLINK answers: File exists[    3.539813] mmcblk1rpmb: mmc1:0001 S10004 partition 3 4.00 MiB, chardev (244:0)
+
+[    3.550519]  mmcblk1: p1
+[    3.591530] OMAP GPIO hardware version 0.1
+[    3.628387] tps65217-pmic: Failed to locate of_node [id: -1]
+FAIL
+[    3.638981] tps65217-bl: Failed to locate of_node [id: -1]
+[    3.641194] tps65217 0-0024: TPS65217 ID 0xe version 1.2
+[    3.641869] at24 0-0050: supply vcc not found, using dummy regulator
+[    3.651800] at24 0-0050: 32768 byte 24c256 EEPROM, writable, 1 bytes/write
+[    3.651971] omap_i2c 44e0b000.i2c: bus 0 rev0.11 at 400 kHz
+Starting dropbear sshd: [    3.656689] omap_i2c 4819c000.i2c: bus 2 rev0.11 at 400 kHz
+[    3.659149] gpio-106 (ls-buf-en-hog): hogged as output/high
+[    3.675470] omap_gpio 44e07000.gpio: Could not set line 6 debounce to 200000 microseconds (-22)
+[    3.675496] sdhci-omap 48060000.mmc: Got CD GPIO
+[    3.675693] sdhci-omap 48060000.mmc: supply vqmmc not found, using dummy regulator
+[    3.679116] sdhci-omap 47810000.mmc: supply vqmmc not found, using dummy regulator
+OK
+[    3.684591] using random self ethernet address
+[    3.684612] using random host ethernet address
+[    3.684624] using host ethernet address: f8:dc:7a:00:00:01
+[    3.684629] using self ethernet address: f8:dc:7a:00:00:02
+[    3.686328] usb0: HOST MAC f8:dc:7a:00:00:01
+[    3.686348] usb0: MAC f8:dc:7a:00:00:02
+[    3.686400] using random self ethernet address
+[    3.686407] using random host ethernet address
+[    3.686538] g_ether gadget: Ethernet Gadget, version: Memorial Day 2008
+[    3.686550] g_ether gadget: g_ether ready
+[    3.701913] sdhci-omap 47810000.mmc: supply vqmmc not found, using dummy regulator
+[    3.726230] mmc0: SDHCI controller on 48060000.mmc [48060000.mmc] using External DMA
+[    3.839355] mmc2: SDHCI controller on 47810000.mmc [47810000.mmc] using External DMA
+[    3.849909] sdhci-omap 47810000.mmc: card claims to support voltages below defined range
+[    4.191814] IPv6: ADDRCONF(NETDEV_CHANGE): usb0: link becomes ready
+[    4.209099] IP-Config: Guessing netmask 255.255.255.0
+[    4.209114] IP-Config: Complete:
+[    4.209117]      device=usb0, hwaddr=f8:dc:7a:00:00:02, ipaddr=192.168.1.100, mask=255.255.255.0, gw=255.255.255.255
+[    4.209132]      host=192.168.1.100, domain=, nis-domain=(none)
+
+Welcome to Buildroot[    4.209139]      bootserver=255.255.255.255, rootserver=192.168.1.111, rootpath=
+
+buildroot login: [    4.307028] mmc2: new high speed SDIO card at address 0001
+[    4.316226] VFS: Mounted root (nfs filesystem) on device 0:18.
+[    4.321375] devtmpfs: mounted
+[    4.323405] Freeing unused kernel memory: 1024K
+[    4.339705] Checked W+X mappings: passed, no W+X pages found
+[    4.339745] Run /sbin/init as init process
+[    4.348862] Not activating Mandatory Access Control as /sbin/tomoyo-init does not exist.
+
+Welcome to Buildroot
+buildroot login: 
+
