@@ -26,7 +26,7 @@ https://github.com/beagleboard/beaglebone-blue/blob/master/BeagleBone_Blue_brd.p
 
 == uboot
 
-=== Load kernel via tftp, mount NFS rootfs
+=== Load kernel,dtb via tftp, mount NFS rootfs
 
 ----
 setenv ipaddr 192.168.1.100
@@ -34,14 +34,23 @@ setenv serverip 192.168.1.111
 setenv ethact usb_ether
 setenv usbnet_devaddr f8:dc:7a:00:00:02
 setenv usbnet_hostaddr f8:dc:7a:00:00:01
-
 setenv bootargs root=/dev/nfs rw ip=192.168.1.100:::::usb0 console=ttyO0,115200n8 g_ether.dev_addr=f8:dc:7a:00:00:02 g_ether.host_addr=f8:dc:7a:00:00:01 nfsroot=192.168.1.111:/nfsroot,nfsvers=3
-
 setenv bootcmd 'tftp 0x81000000 zImage; tftp 0x82000000 am335x-boneblue.dtb; bootz 0x81000000 - 0x82000000'
-
 boot
 ----
 
+=== Load kernel,dtb+cpio-rootfs via tftp, mount NFS rootfs
+
+----
+setenv ipaddr 192.168.1.100
+setenv serverip 192.168.1.111
+setenv ethact usb_ether
+setenv usbnet_devaddr f8:dc:7a:00:00:02
+setenv usbnet_hostaddr f8:dc:7a:00:00:01
+setenv bootargs root=/dev/nfs rw ip=192.168.1.100:::::usb0 console=ttyO0,115200n8 g_ether.dev_addr=f8:dc:7a:00:00:02 g_ether.host_addr=f8:dc:7a:00:00:01 nfsroot=192.168.1.111:/nfsroot,nfsvers=3
+setenv bootcmd 'tftp 0x81000000 zImage; tftp 0x82000000 am335x-boneblue.dtb; tftp 0x82100000 rootfs.cpio.uboot; bootz 0x81000000 0x82100000 0x82000000'
+boot
+----
 
 === Commands
 

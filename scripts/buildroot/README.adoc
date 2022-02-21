@@ -17,22 +17,28 @@ save to: .config
 |make savedefconfig | Creates 'beagleboneblue_defconfig' from .config
 |===
 
-More settings:
+=== Settings
 
-Sets overlay filesystem. Include WLAN firmware. DHCP Client, ssh server
-----
-Toolchain => Toolchain type => External toolchain
-          => Toolchain => Linaro ARM
+|===
+| BR2_DEFCONFIG=beagleboneblue_defconfig | 
+| BR2_TARGET_GENERIC_ROOT_PASSWD=root | set root pw to root
+| BR2_TOOLCHAIN_EXTERNAL=y |
+| BR2_TOOLCHAIN_EXTERNAL_LINARO_ARM=y |
+| BR2_ROOTFS_OVERLAY=board/beagleboneblue/rootfs-overlay |
+| BR2_PACKAGE_WILINK_BT_FIRMWARE=y |
+| BR2_PACKAGE_WPA_SUPPLICANT=y |
+| BR2_PACKAGE_IW=y |
+| BR2_PACKAGE_LINUX_FIRMWARE_TI_WL18XX=y | TI WLAN firmware
+| BR2_PACKAGE_WPA_SUPPLICANT_CLI=y |
+| BR2_PACKAGE_DHCPCD=y | Include dhcp client
+| BR2_PACKAGE_DROPBEAR=y | Include ssh server
+| BR2_TARGET_ROOTFS_CPIO=y 
 
-BR2_ROOTFS_OVERLAY=board/beagleboneblue/rootfs-overlay
-BR2_PACKAGE_WILINK_BT_FIRMWARE
-BR2_PACKAGE_WPA_SUPPLICANT
-BR2_PACKAGE_IW
-BR2_PACKAGE_LINUX_FIRMWARE_TI_WL18XX
-BR2_PACKAGE_WPA_SUPPLICANT_CLI
-BR2_PACKAGE_DHCPCD
-BR2_PACKAGE_DROPBEAR
-----
+ BR2_TARGET_ROOTFS_CPIO_UIMAGE=y 
+
+ BR2_TARGET_ROOTFS_CPIO_GZIP=y | Generate CPIO rootfs to load by uboot
+|===
+
 
 Build:
 ----
