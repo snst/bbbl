@@ -5,4 +5,5 @@
 /kernelbuildscripts
 /scripts/toolchain/*.tar.xz
 /download/*
+scripts/buildroot/data/beagleboneblue/rootfs-overlay/etc/default/SSID.conf
 scripts/buildroot/data/beagleboneblue/rootfs-overlay/etc/default/SSID2.conf
