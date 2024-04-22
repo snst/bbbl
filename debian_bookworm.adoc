@@ -1,1 +1,25 @@
-debian bookworm
+# beaglebone blue with debian 12.x bookworm
+
+## beagleboard.org
+https://forum.beagleboard.org/t/debian-12-x-bookworm-monthly-snapshot-2023-10-07/36175
+
+## Download
+https://rcn-ee.com/rootfs/release/2024-01-06/bookworm-minimal-armhf/
+
+https://rcn-ee.com/rootfs/release/2024-01-06/bookworm-minimal-armhf/am335x-debian-12.4-minimal-armhf-2024-01-06-2gb.img.xz
+
+https://rcn-ee.com/rootfs/release/2024-01-06/bookworm-minimal-armhf/am335x-eMMC-flasher-debian-12.4-minimal-armhf-2024-01-06-2gb.img.xz
+
+default username:password is [debian:temppwd]
+
+
+## wlan
+https://forum.beagleboard.org/t/debian-12-x-major-changes-ncm-only-iwd-for-wifi/36176
+
+```sh
+iwctl device list
+iwctl station wlan0 scan
+iwctl station wlan0 get-networks
+iwctl --passphrase "PASSWORD" station wlan0 connect "SSID"
+iwctl station wlan0 show
+```
