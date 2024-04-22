@@ -66,6 +66,7 @@ restart console
 
 ```sh
 sudo Tools/setup/ubuntu.sh --no-nuttx --no-sim-tools
+pip3 install -r Tools/setup/requirements.txt 
 ```
 
 
