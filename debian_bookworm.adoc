@@ -23,3 +23,58 @@ iwctl station wlan0 get-networks
 iwctl --passphrase "PASSWORD" station wlan0 connect "SSID"
 iwctl station wlan0 show
 ```
+
+## enable root for ssh
+add following to */etc/ssh/sshd_config*
+```sh
+PermitRootLogin yes
+```
+and execute
+```sh
+systemctl restart sshd
+```
+
+## generate ssh key on bbb
+on target
+```sh
+ssh-keygen -t rsa
+```
+
+on PC
+```sh
+ssh-copy-id root@<IP>
+ssh root@<IP>
+```
+
+# Install cross compiler
+
+in devcontainer
+```sh
+mkdir -p bbblue_toolchain/gcc-arm-linux-gnueabihf
+chmod -R 777 bbblue_toolchain
+cd bbblue_toolchain/gcc-arm-linux-gnueabihf
+
+wget https://snapshots.linaro.org/gnu-toolchain/13.0-2022.06-1/arm-linux-gnueabihf/gcc-linaro-13.0.0-2022.06-x86_64_arm-linux-gnueabihf.tar.xz
+tar -xf gcc-linaro-13.0.0-2022.06-x86_64_arm-linux-gnueabihf.tar.xz
+```
+
+add to *~/.profile*
+```sh
+export PATH=$PATH:/workspaces/bbb/bbblue_toolchain/gcc-arm-linux-gnueabihf/gcc-linaro-13.0.0-2022.06-x86_64_arm-linux-gnueabihf/bin
+```
+restart console
+
+```sh
+sudo Tools/setup/ubuntu.sh --no-nuttx --no-sim-tools
+```
+
+
+
+# px4
+https://docs.px4.io/v1.14/en/flight_controller/beaglebone_blue.html
+
+## clone repo
+```sh
+git clone https://github.com/PX4/PX4-Autopilot.git --recursive
+```
+
