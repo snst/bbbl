@@ -46,6 +46,32 @@ ssh-copy-id root@<IP>
 ssh root@<IP>
 ```
 
+## i2c
+
+find . -name *.dtbo
+i2cdetect -y -a -r 0
+
+./boot/dtbs/5.10.168-ti-r75/overlays/BB-I2C2-MPU6050.dtbo
+./boot/dtbs/5.10.168-ti-r75/overlays/BB-I2C1-RTC-DS3231.dtbo
+./boot/dtbs/5.10.168-ti-r75/overlays/BB-I2C2-BME680.dtbo
+./boot/dtbs/5.10.168-ti-r75/overlays/BB-I2C1-MCP7940X-00A0.dtbo
+./boot/dtbs/5.10.168-ti-r75/overlays/BB-I2C1-RTC-PCF8563.dtbo
+./usr/lib/linux-image-5.10.168-ti-r75/overlays/BB-I2C2-MPU6050.dtbo
+./usr/lib/linux-image-5.10.168-ti-r75/overlays/BB-I2C1-RTC-DS3231.dtbo
+./usr/lib/linux-image-5.10.168-ti-r75/overlays/BB-I2C2-BME680.dtbo
+./usr/lib/linux-image-5.10.168-ti-r75/overlays/BB-I2C1-MCP7940X-00A0.dtbo
+./usr/lib/linux-image-5.10.168-ti-r75/overlays/BB-I2C1-RTC-PCF8563.dtbo
+
+mpu9250_i2c -I -a 0x68 start
+
+0x48: Used by the onboard analog-to-digital converter (ADC).
+0x70: Used by the onboard EEPROM.
+0x18, 0x19: Used by the MPU-9250 9-axis accelerometer/gyroscope/magnetometer sensor.
+0x77: Used by the BMP280 pressure sensor (if present).
+0x68: Used by the DS3231 real-time clock (RTC) (if present).
+
+https://github.com/beagleboard/bb.org-overlays/blob/master/src/arm/BBBLUE-MPU9250-00A0.dts
+
 # Install cross compiler
 
 in devcontainer
