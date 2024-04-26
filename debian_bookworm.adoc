@@ -100,6 +100,11 @@ pip3 install -r Tools/setup/requirements.txt
 # px4
 https://docs.px4.io/v1.14/en/flight_controller/beaglebone_blue.html
 
+```sh
+cd /home/debian/px4
+sudo ./bin/px4 -s px4.config
+```
+
 ## clone repo
 ```sh
 git clone https://github.com/PX4/PX4-Autopilot.git --recursive
