@@ -1,0 +1,51 @@
+# beaglebone blue with debian 11.x bullseye
+
+  ## beagleboard.org
+https://forum.beagleboard.org/t/debian-11-x-bullseye-monthly-snapshot-2023-10-07/31280
+  
+## Download
+https://rcn-ee.com/rootfs/release/2023-10-07/bullseye-minimal-armhf/am335x-debian-11.8-minimal-armhf-2023-10-07-2gb.img.xz
+https://rcn-ee.com/rootfs/release/2023-10-07/bullseye-minimal-armhf/am335x-eMMC-flasher-debian-11.8-minimal-armhf-2023-10-07-2gb.img.xz
+
+## wlan
+https://forum.beagleboard.org/t/debian-12-x-major-changes-ncm-only-iwd-for-wifi/36176
+
+```sh
+root@BeagleBone:~# wpa_cli -i wlan0
+wpa_cli v2.9
+Copyright (c) 2004-2019, Jouni Malinen <j@w1.fi> and contributors
+
+This software may be distributed under the terms of the BSD license.
+See README for more details.
+
+Interactive mode
+
+> scan
+OK
+<3>CTRL-EVENT-SCAN-STARTED 
+<3>CTRL-EVENT-SCAN-RESULTS 
+<3>CTRL-EVENT-NETWORK-NOT-FOUND 
+> scan_results
+bssid / frequency / signal level / flags / ssid
+b4:fb:e4:f5:7b:d2	5180	-86	[WPA2-PSK-CCMP][ESS]	XYZA
+be:fb:e4:f5:7b:d2	5180	-87	[WPA2-PSK-CCMP][ESS]	BeagleBone
+ba:fb:e4:f5:7b:d2	5180	-87	[WPA2-PSK-CCMP][ESS]	XYZB
+c2:fb:e4:f5:7b:d2	5180	-87	[WPA2-PSK-CCMP][ESS]	XYZC
+> 
+> add_network
+1
+> set_network 1 ssid "BeagleBone"
+OK
+> set_network 1 psk "BeagleBone"
+OK
+> enable_network 1
+OK
+<3>CTRL-EVENT-SCAN-STARTED 
+<3>CTRL-EVENT-SCAN-RESULTS 
+<3>SME: Trying to authenticate with be:fb:e4:f5:7b:d2 (SSID='BeagleBone' freq=5180 MHz)
+<3>Trying to associate with be:fb:e4:f5:7b:d2 (SSID='BeagleBone' freq=5180 MHz)
+<3>Associated with be:fb:e4:f5:7b:d2
+<3>CTRL-EVENT-SUBNET-STATUS-UPDATE status=0
+<3>WPA: Key negotiation completed with be:fb:e4:f5:7b:d2 [PTK=CCMP GTK=CCMP]
+<3>CTRL-EVENT-CONNECTED - Connection to be:fb:e4:f5:7b:d2 completed [id=1 id_str=]
+```
