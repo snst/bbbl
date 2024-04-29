@@ -62,6 +62,7 @@ modprobe -r ak8975
 ## services
 ```sh
 systemctl disable nginx
+systemd-analyze blame
 ```
 
 
