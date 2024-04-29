@@ -46,10 +46,30 @@ ssh-copy-id root@<IP>
 ssh root@<IP>
 ```
 
-## i2c
+## modules
+```sh
+lsmod
+modprobe -r bmp280_spi
+modprobe -r bmp280_i2c
+modprobe -r bmp280
+modprobe -r inv_mpu6050_spi
+modprobe -r inv_mpu6050_i2c
+modprobe -r inv_mpu6050
 
+```
+
+
+## i2c
+```sh
 find . -name *.dtbo
+
+i2cdetect -l
+
 i2cdetect -y -a -r 0
+
+mpu9250_i2c -I -a 0x68 start
+
+```
 
 ./boot/dtbs/5.10.168-ti-r75/overlays/BB-I2C2-MPU6050.dtbo
 ./boot/dtbs/5.10.168-ti-r75/overlays/BB-I2C1-RTC-DS3231.dtbo
@@ -62,7 +82,11 @@ i2cdetect -y -a -r 0
 ./usr/lib/linux-image-5.10.168-ti-r75/overlays/BB-I2C1-MCP7940X-00A0.dtbo
 ./usr/lib/linux-image-5.10.168-ti-r75/overlays/BB-I2C1-RTC-PCF8563.dtbo
 
-mpu9250_i2c -I -a 0x68 start
+
+MPU9250 0x68
+AK8963 0x0C
+BMP280 0x76
+
 
 0x48: Used by the onboard analog-to-digital converter (ADC).
 0x70: Used by the onboard EEPROM.
@@ -103,6 +127,7 @@ https://docs.px4.io/v1.14/en/flight_controller/beaglebone_blue.html
 ```sh
 cd /home/debian/px4
 sudo ./bin/px4 -s px4.config
+/home/debian/px4/bin/px4 -s px4.config
 ```
 
 ## clone repo
