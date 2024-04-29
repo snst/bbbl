@@ -49,3 +49,17 @@ OK
 <3>WPA: Key negotiation completed with be:fb:e4:f5:7b:d2 [PTK=CCMP GTK=CCMP]
 <3>CTRL-EVENT-CONNECTED - Connection to be:fb:e4:f5:7b:d2 completed [id=1 id_str=]
 ```
+
+## Update
+
+```sh
+sudo apt-get update
+sudo apt-get install i2c-tools
+```
+
+## i2c
+
+```sh
+i2cdetect -l
+i2cdetect -y -a -r 2
+```
