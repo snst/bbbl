@@ -59,6 +59,11 @@ modprobe -r ak8975
 
 ```
 
+## services
+```sh
+systemctl disable nginx
+```
+
 
 ## i2c
 ```sh
