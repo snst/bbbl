@@ -55,6 +55,7 @@ modprobe -r bmp280
 modprobe -r inv_mpu6050_spi
 modprobe -r inv_mpu6050_i2c
 modprobe -r inv_mpu6050
+modprobe -r ak8975
 
 ```
 
